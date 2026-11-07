@@ -6,14 +6,16 @@
 
 ClawDroid is a cargo-generate template for a Java Android app with a Rust library. The sample keeps the crab on the screen. Each button asks that library for a short answer.
 
+<p align="center">
+  <img src="docs/sample.png" width="240" alt="ClawDroid sample: the crab, the app name, and twelve buttons">
+</p>
+
 ## Generate a project
 
 ```sh
 cargo install cargo-generate
 cargo generate --allow-commands --git https://github.com/Kiojeen/clawdroid.git
 ```
-
-`--allow-commands` lets the Git repo answer run `git init`. The questions are:
 
 - Folder name, the directory the project is created in. Example: `my-rust-app`.
 - App name. Example: `ClawDroid`.
