@@ -4,7 +4,7 @@
   <img src="docs/clawdroid.png" width="128" height="128" alt="ClawDroid icon: an engraved crab on an orange tile">
 </p>
 
-ClawDroid is a cargo-generate template for a Java Android app with a Rust library. The sample keeps the crab on the screen. Each button asks that library for a short answer.
+ClawDroid is a cargo-generate template for a Java Android app with a Rust library.
 
 ## Generate a project
 
@@ -13,13 +13,7 @@ cargo install cargo-generate
 cargo generate --allow-commands --git https://github.com/Kiojeen/clawdroid.git
 ```
 
-- Folder name, the directory the project is created in. Example: `my-rust-app`.
-- App name. Example: `ClawDroid`.
-- Package name. Example: `com.example.clawdroid`.
-- Library name. Example: `clawdroid`. The file is `lib<name>.so`.
-- ABIs. Space toggles a row and enter confirms. `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86` start selected.
-- minSdk. Example: `24`. The choices are 24, 26, 28, 33, and 34.
-- Git repo. The default is yes.
+You choose a folder name, an app name, a package name, and a library name. The defaults are `my-rust-app`, `ClawDroid`, `com.example.clawdroid`, and `clawdroid`. The library file is `lib<name>.so`. You also choose ABIs and a minSdk. Space toggles an ABI and enter confirms. `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86` start selected. minSdk can be 24, 26, 28, 33, or 34, and 24 is the default. Git repo defaults to yes.
 
 <p align="center">
   <img src="docs/sample.png" width="240" alt="ClawDroid sample: the crab, the app name, and twelve buttons">
