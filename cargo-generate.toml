@@ -13,8 +13,6 @@ ignore = [
 ]
 exclude = [
     "gradle/wrapper/gradle-wrapper.jar",
-    "**/*.webp",
-    "**/*.png",
     "**/*.so",
 ]
 
