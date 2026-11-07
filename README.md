@@ -4,7 +4,7 @@
   <img src="docs/clawdroid.png" width="128" height="128" alt="ClawDroid icon: an engraved crab on an orange tile">
 </p>
 
-ClawDroid is a cargo-generate template for a Java Android app with a Rust library.
+ClawDroid is a cargo-generate template for a Java or Kotlin Android app with a Rust library.
 
 ## Generate a project
 
