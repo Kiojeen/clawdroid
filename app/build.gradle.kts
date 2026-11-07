@@ -14,16 +14,16 @@ rustJni {
     jniMethodsVisibility = Visibility.PUBLIC
     ndkVersion = "27.1.12297006"
     architectures {
-        {%- if arch == "all" or arch == "armeabi-v7a" %}
+        {%- if use_armv7 %}
         armv7_linux_androideabi("armv7a-linux-androideabi24-clang")
         {%- endif %}
-        {%- if arch == "all" or arch == "arm64-v8a" %}
+        {%- if use_arm64 %}
         aarch64_linux_android("aarch64-linux-android24-clang")
         {%- endif %}
-        {%- if arch == "all" or arch == "x86" %}
+        {%- if use_x86 %}
         i686_linux_android("i686-linux-android24-clang")
         {%- endif %}
-        {%- if arch == "all" or arch == "x86_64" %}
+        {%- if use_x86_64 %}
         x86_64_linux_android("x86_64-linux-android24-clang")
         {%- endif %}
     }

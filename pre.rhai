@@ -13,47 +13,49 @@ fn subst(text, from, to) {
     }
 }
 
-let crate_name = `${variable::get("crate_name")}`;
-
-if !variable::is_set("lib_name") {
-    let lib_name = variable::prompt(
-        "Native library name",
-        "clawdroid",
-        "^[a-z][a-z0-9_]*$"
-    );
-    variable::set("lib_name", lib_name);
+fn split_commas(text) {
+    let out = [];
+    let rest = text;
+    loop {
+        let idx = rest.index_of(",");
+        if idx < 0 {
+            let last = rest.trim();
+            if last != "" {
+                out.push(last);
+            }
+            return out;
+        }
+        let piece = rest.sub_string(0, idx).trim();
+        if piece != "" {
+            out.push(piece);
+        }
+        rest = rest.sub_string(idx + 1);
+    }
 }
 
-if !variable::is_set("package_name") {
-    let package_name = variable::prompt(
-        "Android package name",
-        `com.example.${crate_name}`,
-        "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
-    );
-    variable::set("package_name", package_name);
+let abis = variable::get("abis");
+let use_arm64 = false;
+let use_armv7 = false;
+let use_x86_64 = false;
+let use_x86 = false;
+if type_of(abis) == "string" {
+    abis = split_commas(abis);
 }
-
-if !variable::is_set("arch") {
-    let arch = variable::prompt("ABIs", "all", [
-        "all",
-        "arm64-v8a",
-        "armeabi-v7a",
-        "x86_64",
-        "x86",
-    ]);
-    variable::set("arch", arch);
+if type_of(abis) == "string" {
+    throw "Pick at least one ABI";
+} else {
+    if abis.len == 0 {
+        throw "Pick at least one ABI";
+    }
+    use_arm64 = "arm64-v8a" in abis;
+    use_armv7 = "armeabi-v7a" in abis;
+    use_x86_64 = "x86_64" in abis;
+    use_x86 = "x86" in abis;
 }
-
-if !variable::is_set("min_sdk") {
-    let min_sdk = variable::prompt("minSdk", "24", [
-        "24",
-        "26",
-        "28",
-        "33",
-        "34",
-    ]);
-    variable::set("min_sdk", min_sdk);
-}
+variable::set("use_arm64", use_arm64);
+variable::set("use_armv7", use_armv7);
+variable::set("use_x86_64", use_x86_64);
+variable::set("use_x86", use_x86);
 
 let package_name = `${variable::get("package_name")}`;
 let jni = subst(package_name, "_", "_1");
@@ -85,10 +87,8 @@ variable::set("s3", `${parts[3]}`);
 variable::set("s4", `${parts[4]}`);
 variable::set("s5", `${parts[5]}`);
 
-let project_name = `${variable::get("project-name")}`;
-variable::set("app_name", project_name);
-
-let theme = subst(project_name, " ", "");
+let app_name = `${variable::get("app_name")}`;
+let theme = subst(app_name, " ", "");
 theme = subst(theme, "-", "");
 theme = subst(theme, "_", "");
 theme = subst(theme, ".", "");

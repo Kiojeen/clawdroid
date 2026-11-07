@@ -20,3 +20,32 @@ exclude = [
 init = ["init.rhai"]
 pre = ["pre.rhai"]
 post = ["post.rhai"]
+
+[placeholders.app_name]
+type = "string"
+prompt = "App name shown under the icon. Example: ClawDroid"
+default = "ClawDroid"
+
+[placeholders.package_name]
+type = "string"
+prompt = "Android package name and application id. Example: com.example.clawdroid"
+default = "com.example.clawdroid"
+regex = "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+
+[placeholders.lib_name]
+type = "string"
+prompt = "Native library name passed to System.loadLibrary. Example: clawdroid"
+default = "clawdroid"
+regex = "^[a-z][a-z0-9_]*$"
+
+[placeholders.abis]
+type = "array"
+prompt = "ABIs to build. Space toggles a row, enter confirms. Example: arm64-v8a and x86_64"
+choices = ["arm64-v8a", "armeabi-v7a", "x86_64", "x86"]
+default = ["arm64-v8a", "armeabi-v7a", "x86_64", "x86"]
+
+[placeholders.min_sdk]
+type = "string"
+prompt = "Minimum Android SDK. Example: 24"
+choices = ["24", "26", "28", "33", "34"]
+default = "24"

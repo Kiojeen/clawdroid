@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "{{app_name}}"
+rootProject.name = "{{project-name}}"
 include(":app")

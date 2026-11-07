@@ -13,12 +13,14 @@ cargo install cargo-generate
 cargo generate --git https://github.com/Kiojeen/clawdroid.git
 ```
 
-The first question is the project name. Then it asks for:
+It prints the crab, then asks:
 
-- Android package name. The default is `com.example.` plus the project name in snake case.
-- Native library name. The default is `clawdroid`. The app calls `System.loadLibrary` with that name, and the file on disk is `lib<name>.so`.
-- ABIs: all of `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86`, or one of them.
-- `minSdk`: 24, 26, 28, 33, or 34. The default is 24.
+- Folder name. This is the directory, not the name under the icon. Example: `my-rust-app`.
+- App name shown under the icon. Example: `ClawDroid`.
+- Android package name and application id. Example: `com.example.clawdroid`.
+- Native library name passed to `System.loadLibrary`. Example: `clawdroid`. The file is `lib<name>.so`.
+- ABIs. Space toggles a row and enter confirms, so you can keep more than one. The choices are `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86`. All four start selected.
+- Minimum Android SDK. Example: `24`. The choices are 24, 26, 28, 33, and 34.
 
 ## Libraries
 
