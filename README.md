@@ -10,10 +10,8 @@ ClawDroid is a cargo-generate template for a Java Android app with a Rust librar
 
 ```sh
 cargo install cargo-generate
-dir=$(mktemp -d)
-tag=$(curl -fsSL -o /dev/null -w '%{url_effective}' https://github.com/Kiojeen/clawdroid/releases/latest | sed 's|.*/tag/||')
-curl -fsSL -L "https://github.com/Kiojeen/clawdroid/archive/refs/tags/${tag}.tar.gz" | tar -xz -C "$dir"
-cargo generate --allow-commands --path "$(find "$dir" -mindepth 1 -maxdepth 1 -type d)"
+curl -fsSL -L https://github.com/Kiojeen/clawdroid/archive/refs/tags/v1.0.2.tar.gz | tar -xz
+cargo generate --allow-commands --path clawdroid-1.0.2
 ```
 
 You choose a folder name, an app name, a package name, a library name, and Java or Kotlin. The defaults are `my-rust-app`, `ClawDroid`, `com.example.clawdroid`, `clawdroid`, and `java`. The library file is `lib<name>.so`. You also choose ABIs and a minSdk. Space toggles an ABI and enter confirms. `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86` start selected. minSdk can be 24, 26, 28, 33, or 34, and 24 is the default. Git repo defaults to yes.
