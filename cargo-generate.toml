@@ -23,6 +23,12 @@ init = ["init.rhai"]
 pre = ["pre.rhai"]
 post = ["post.rhai"]
 
+[placeholders.language]
+type = "string"
+prompt = "Language"
+choices = ["java", "kotlin"]
+default = "java"
+
 [placeholders.app_name]
 type = "string"
 prompt = "App name"
@@ -56,3 +62,17 @@ default = "24"
 type = "bool"
 prompt = "Git repo"
 default = true
+
+[conditional.'language == "java"']
+ignore = [
+    "app/src/main/kotlin",
+    "app/src/test/kotlin",
+    "app/src/androidTest/kotlin",
+]
+
+[conditional.'language == "kotlin"']
+ignore = [
+    "app/src/main/java",
+    "app/src/test/java",
+    "app/src/androidTest/java",
+]

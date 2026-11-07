@@ -2,6 +2,9 @@ import io.github.andrefigas.rustjni.reflection.Visibility
 
 plugins {
     alias(libs.plugins.android.application)
+    {%- if language == "kotlin" %}
+    alias(libs.plugins.kotlin.android)
+    {%- endif %}
     id("io.github.andrefigas.rustjni") version "0.1.0"
 }
 
@@ -60,6 +63,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    {%- if language == "kotlin" %}
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    {%- endif %}
 }
 
 dependencies {

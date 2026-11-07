@@ -10,10 +10,13 @@ ClawDroid is a cargo-generate template for a Java Android app with a Rust librar
 
 ```sh
 cargo install cargo-generate
-cargo generate --allow-commands --git https://github.com/Kiojeen/clawdroid.git
+dir=$(mktemp -d)
+url=$(curl -fsSL https://api.github.com/repos/Kiojeen/clawdroid/releases/latest | sed -n 's/.*"tarball_url": *"\([^"]*\)".*/\1/p')
+curl -fsSL -L "$url" | tar -xz -C "$dir"
+cargo generate --allow-commands --path "$(find "$dir" -mindepth 1 -maxdepth 1 -type d)"
 ```
 
-You choose a folder name, an app name, a package name, and a library name. The defaults are `my-rust-app`, `ClawDroid`, `com.example.clawdroid`, and `clawdroid`. The library file is `lib<name>.so`. You also choose ABIs and a minSdk. Space toggles an ABI and enter confirms. `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86` start selected. minSdk can be 24, 26, 28, 33, or 34, and 24 is the default. Git repo defaults to yes.
+You choose a folder name, an app name, a package name, a library name, and Java or Kotlin. The defaults are `my-rust-app`, `ClawDroid`, `com.example.clawdroid`, `clawdroid`, and `java`. The library file is `lib<name>.so`. You also choose ABIs and a minSdk. Space toggles an ABI and enter confirms. `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86` start selected. minSdk can be 24, 26, 28, 33, or 34, and 24 is the default. Git repo defaults to yes.
 
 <p align="center">
   <img src="docs/sample.png" width="240" alt="ClawDroid sample: the crab, the app name, and twelve buttons">
@@ -22,6 +25,7 @@ You choose a folder name, an app name, a package name, and a library name. The d
 ## Libraries
 
 - Android Gradle Plugin 8.13.2
+- Kotlin 2.0.21, when you choose Kotlin
 - Gradle 8.13
 - RustJNI 0.1.0
 - jni 0.21
