@@ -22,10 +22,8 @@ fn prefix(n) {
 
 let depth = parse_int(`${variable::get("pkg_depth")}`);
 let lang = `${variable::get("language")}`;
-let src = "java";
 let ext = "java";
 if lang == "kotlin" {
-    src = "kotlin";
     ext = "kt";
 }
 if depth < 6 {
@@ -33,20 +31,20 @@ if depth < 6 {
     let real = prefix(depth);
     let extra = prefix(depth + 1);
     file::rename(
-        `app/src/main/${src}/${full}/MainActivity.${ext}`,
-        `app/src/main/${src}/${real}/MainActivity.${ext}`
+        `app/src/main/java/${full}/MainActivity.${ext}`,
+        `app/src/main/java/${real}/MainActivity.${ext}`
     );
-    file::delete(`app/src/main/${src}/${extra}`);
+    file::delete(`app/src/main/java/${extra}`);
     file::rename(
-        `app/src/test/${src}/${full}/ExampleUnitTest.${ext}`,
-        `app/src/test/${src}/${real}/ExampleUnitTest.${ext}`
+        `app/src/test/java/${full}/ExampleUnitTest.${ext}`,
+        `app/src/test/java/${real}/ExampleUnitTest.${ext}`
     );
-    file::delete(`app/src/test/${src}/${extra}`);
+    file::delete(`app/src/test/java/${extra}`);
     file::rename(
-        `app/src/androidTest/${src}/${full}/ExampleInstrumentedTest.${ext}`,
-        `app/src/androidTest/${src}/${real}/ExampleInstrumentedTest.${ext}`
+        `app/src/androidTest/java/${full}/ExampleInstrumentedTest.${ext}`,
+        `app/src/androidTest/java/${real}/ExampleInstrumentedTest.${ext}`
     );
-    file::delete(`app/src/androidTest/${src}/${extra}`);
+    file::delete(`app/src/androidTest/java/${extra}`);
 }
 
 let git_repo = variable::get("git_repo");

@@ -65,14 +65,14 @@ default = true
 
 [conditional.'language == "java"']
 ignore = [
-    "app/src/main/kotlin",
-    "app/src/test/kotlin",
-    "app/src/androidTest/kotlin",
+    "**/MainActivity.kt",
+    "**/ExampleUnitTest.kt",
+    "**/ExampleInstrumentedTest.kt",
 ]
 
 [conditional.'language == "kotlin"']
 ignore = [
-    "app/src/main/java",
-    "app/src/test/java",
-    "app/src/androidTest/java",
+    "**/MainActivity.java",
+    "**/ExampleUnitTest.java",
+    "**/ExampleInstrumentedTest.java",
 ]
