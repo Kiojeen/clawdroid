@@ -11,8 +11,8 @@ ClawDroid is a cargo-generate template for a Java Android app with a Rust librar
 ```sh
 cargo install cargo-generate
 dir=$(mktemp -d)
-url=$(curl -fsSL https://api.github.com/repos/Kiojeen/clawdroid/releases/latest | sed -n 's/.*"tarball_url": *"\([^"]*\)".*/\1/p')
-curl -fsSL -L "$url" | tar -xz -C "$dir"
+tag=$(curl -fsSL -o /dev/null -w '%{url_effective}' https://github.com/Kiojeen/clawdroid/releases/latest | sed 's|.*/tag/||')
+curl -fsSL -L "https://github.com/Kiojeen/clawdroid/archive/refs/tags/${tag}.tar.gz" | tar -xz -C "$dir"
 cargo generate --allow-commands --path "$(find "$dir" -mindepth 1 -maxdepth 1 -type d)"
 ```
 
