@@ -6,10 +6,6 @@
 
 ClawDroid is a cargo-generate template for a Java Android app with a Rust library. The sample keeps the crab on the screen. Each button asks that library for a short answer.
 
-<p align="center">
-  <img src="docs/sample.png" width="240" alt="ClawDroid sample: the crab, the app name, and twelve buttons">
-</p>
-
 ## Generate a project
 
 ```sh
@@ -24,6 +20,10 @@ cargo generate --allow-commands --git https://github.com/Kiojeen/clawdroid.git
 - ABIs. Space toggles a row and enter confirms. `arm64-v8a`, `armeabi-v7a`, `x86_64`, and `x86` start selected.
 - minSdk. Example: `24`. The choices are 24, 26, 28, 33, and 34.
 - Git repo. The default is yes.
+
+<p align="center">
+  <img src="docs/sample.png" width="240" alt="ClawDroid sample: the crab, the app name, and twelve buttons">
+</p>
 
 ## Libraries
 
