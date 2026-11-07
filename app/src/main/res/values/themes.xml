@@ -1,0 +1,14 @@
+<resources>
+    <style name="Theme.{{theme_name}}" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/claw_red</item>
+        <item name="colorPrimaryVariant">@color/claw_red_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/claw_ink</item>
+        <item name="colorSecondaryVariant">@color/claw_ink</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/claw_paper</item>
+        <item name="colorOnBackground">@color/claw_ink</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
