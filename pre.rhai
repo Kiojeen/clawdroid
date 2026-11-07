@@ -70,6 +70,9 @@ loop {
     parts.push(rest.sub_string(0, idx));
     rest = rest.sub_string(idx + 1);
 }
+if parts.len > 6 {
+    throw "Package names in this template can have at most 6 segments";
+}
 let pkg_depth = parts.len;
 while parts.len < 6 {
     parts.push("zzunused00");
