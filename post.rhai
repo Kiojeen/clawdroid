@@ -41,3 +41,16 @@ if depth < 6 {
     );
     file::delete(`app/src/androidTest/java/${extra}`);
 }
+
+let git_repo = variable::get("git_repo");
+let want_git = false;
+if type_of(git_repo) == "bool" {
+    want_git = git_repo;
+} else {
+    let answer = `${git_repo}`;
+    want_git = answer == "true";
+}
+if want_git {
+    let dest = env::destination_directory;
+    system::command("git", ["init", "-b", "main", `'${dest}'`]);
+}
